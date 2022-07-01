@@ -1,5 +1,7 @@
 ERROR_MSG = 'ERROR'
 
+from pygame import mixer
+from time import sleep
 from functools import partial
 
 
@@ -8,6 +10,12 @@ def evaluateExpression(expression):
         result = str(eval(expression, {}, {}))
     except Exception:
         result = ERROR_MSG
+        mixer.init()
+        mixer.music.load("not code/sound.mp3")
+
+        mixer.music.play()
+        sleep(2)
+        mixer.music.stop()
 
     return result
 
